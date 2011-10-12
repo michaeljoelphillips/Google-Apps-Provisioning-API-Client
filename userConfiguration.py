@@ -82,11 +82,11 @@ def main():
 	global options
 
 	parser = OptionParser(usage=usage)
-	parser.add_option("--method", choices=["create", "retrieve", "retrieve_all", "delete", "update"], help="The method to be used.  Select from create, delete, update, retrieve, retrieve_all.")
-	parser.add_option("--username", help="The user in which to perform actions.")
-	parser.add_option("--password", help="The password to be updated for the user.")
-	parser.add_option("--firstname", help="Optional.  Firstname of new user.")
-	parser.add_option("--lastname", help="Optional.  Lastname of new user.")
+	parser.add_option("-m", "--method", choices=["create", "retrieve", "retrieve_all", "delete", "update"], help="The method to be used.  Select from create, delete, update, retrieve, retrieve_all.")
+	parser.add_option("-u", "--username", help="The user in which to perform actions.")
+	parser.add_option("-p", "--password", help="The password to be updated for the user.")
+	parser.add_option("-f", "--firstname", help="Optional.  Firstname of new user.")
+	parser.add_option("-l", "--lastname", help="Optional.  Lastname of new user.")
 	(options, args) = parser.parse_args()
 
 	if (options.method is None or options.method != "retrieve_all" and options.username is None or options.method == "update" and options.password is None):
