@@ -118,9 +118,9 @@ def main():
 
 	if (options.adminlogin is None):
 		options.adminlogin = raw_input("Administrator Email: ")
-	elif (options.domain is None):
+	if (options.domain is None):
 		options.domain = raw_input("Domain: ")
-	elif (options.adminpassword is None):
+	if (options.adminpassword is None):
 		options.adminpassword = getpass.getpass(prompt = "Please Authenticate: ")
 	objectvar = ProvisioningClient(options.adminlogin, options.domain, options.adminpassword)
 	objectvar.executeCommand(options.method, options.username, options.password, options.firstname, options.lastname)
