@@ -67,7 +67,7 @@ class ProvisioningClient(object):
 			last_name: [optional] The last name of the new user to be created.
 		"""
 
-		if method == 'create':
+		if (method == 'create'):
 			print "Creating ", user_name
 			if (first_name is None):
 				first_name = raw_input("First Name: ")
@@ -80,13 +80,13 @@ class ProvisioningClient(object):
 					print "Passwords do not match!"
 					sys.exit()
 			print self.client.CreateUser(user_name=user_name, given_name=first_name, family_name=last_name, password=password)
-		elif method == 'retrieve':
+		elif (method == 'retrieve'):
 			print self.client.RetrieveUser(user_name=user_name)
-		elif method == 'delete':
+		elif (method == 'delete'):
 			print self.client.DeleteUser(user_name=user_name)
-		elif method == 'retrieve_all':
+		elif (method == 'retrieve_all'):
 			print self.client.RetrieveAllUsers()
-		elif method == 'update':
+		elif (method == 'update'):
 			user = self.client.RetrieveUser(user_name=user_name)
 			user.login.password = password
 			self.client.UpdateUser(user_name, user)
@@ -125,6 +125,6 @@ def main():
 	objectvar = ProvisioningClient(options.adminlogin, options.domain, options.adminpassword)
 	objectvar.executeCommand(options.method, options.username, options.password, options.firstname, options.lastname)
 
-if __name__ == "__main__":
+if (__name__ == "__main__"):
 	main()
 
