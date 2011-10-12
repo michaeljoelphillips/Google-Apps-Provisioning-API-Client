@@ -102,6 +102,9 @@ def main():
 	global options
 
 	parser = OptionParser(usage=usage)
+	parser.add_option("--adminlogin", help="The Administrator Email address for the domain.")
+	parser.add_option("--adminpassword", help="The Administrator Password for the domain.")
+	parser.add_option("-d", "--domain", help="The Domain to configure.")
 	parser.add_option("-m", "--method", choices=["create", "retrieve", "retrieve_all", "delete", "update"], help="The method to be used.  Select from create, delete, update, retrieve, retrieve_all.")
 	parser.add_option("-u", "--username", help="The user in which to perform actions.")
 	parser.add_option("-p", "--password", help="The password to be updated for the user.")
@@ -113,10 +116,13 @@ def main():
 		parser.print_help()
 		return
 
-	admin_email = raw_input("Administrator Email: ")
-	domain = raw_input("Domain: ")
-	admin_password = getpass.getpass(prompt = "Please Authenticate: ")
-	objectvar = ProvisioningClient(admin_email, domain, admin_password)
+	if (options.adminlogin is None):
+		options.adminlogin = raw_input("Administrator Email: ")
+	elif (options.domain is None):
+		options.domain = raw_input("Domain: ")
+	elif (options.adminpassword is None):
+		options.adminpassword = getpass.getpass(prompt = "Please Authenticate: ")
+	objectvar = ProvisioningClient(options.adminlogin, options.domain, options.adminpassword)
 	objectvar.executeCommand(options.method, options.username, options.password, options.firstname, options.lastname)
 
 if __name__ == "__main__":
