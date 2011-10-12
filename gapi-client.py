@@ -1,4 +1,22 @@
 #!/usr/bin/python
+#
+# gapi-client.py - Google Provisioning API Client
+# Copyright (C) 2011 Michael Phillips <michaeljoelphillips@gmail.com>
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along
+# with this program; if not, write to the Free Software Foundation, Inc.,
+# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+# Distributed under the GNU General Public License, version 2.0.
 
 """A Command Line client for Google Apps user configuration used with Google Provisioning API.
 
@@ -43,8 +61,10 @@ class ProvisioningClient(object):
 
 		Args:
 			method: [string] The method assigned to be performed on the user.
-			user_name: [string] The name of the user for action to be taken on.
+			user_name: [string] The user name of the user for action to be taken on.
 			password: [optional] The password for the user for action to be taken on.
+			first_name: [optional] The first name of the new user to be created.
+			last_name: [optional] The last name of the new user to be created.
 		"""
 
 		if method == 'create':
