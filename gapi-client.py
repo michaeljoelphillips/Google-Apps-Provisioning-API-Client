@@ -88,6 +88,12 @@ class ProvisioningClient(object):
 			print self.client.RetrieveAllUsers()
 		elif (method == 'update'):
 			user = self.client.RetrieveUser(user_name=user_name)
+			if (password is None):
+				password = getpass.getpass(prompt = "New Password: ")
+				verify_password = getpass.getpass(prompt = "Verify Passwords: ")
+				if (verify_password != password):
+					print "Passwords do not match!"
+					sys.exit()
 			user.login.password = password
 			self.client.UpdateUser(user_name, user)
 		else:
@@ -112,7 +118,7 @@ def main():
 	parser.add_option("-l", "--lastname", help="Optional.  Lastname of new user.")
 	(options, args) = parser.parse_args()
 
-	if (options.method is None or options.method != "retrieve_all" and options.username is None or options.method == "update" and options.password is None):
+	if (options.method is None or options.method != "retrieve_all" and options.username is None):
 		parser.print_help()
 		return
 
